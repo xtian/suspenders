@@ -52,4 +52,19 @@ feature 'Suspend a new project with default configuration' do
       /license_key: '<%= ENV\['NEW_RELIC_LICENSE_KEY'\] %>'/
     )
   end
+
+  scenario 'removes comments from config files' do
+    run_suspenders
+
+    test_file = IO.read("#{project_path}/config/environments/test.rb")
+    development_file = IO.read("#{project_path}/config/environments/development.rb")
+    production_file = IO.read("#{project_path}/config/environments/production.rb")
+    environment_file = IO.read("#{project_path}/config/environment.rb")
+
+    puts test_file
+    expect(test_file).not_to match(/.*#.*/)
+    expect(development_file).not_to match(/.*#.*/)
+    expect(production_file).not_to match(/.*#.*/)
+    expect(environment_file).not_to match(/.*#.*/)
+  end
 end

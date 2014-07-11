@@ -302,6 +302,23 @@ heroku join --app #{app_name}-production
       end
     end
 
+    def remove_config_comment_lines
+      files = [
+        'environments/test.rb',
+        'environments/development.rb',
+        'environments/production.rb',
+        'environment.rb'
+      ]
+
+      files.each do |file|
+        path = File.join(destination_root, "config/#{file}")
+        file_contents = IO.read(path)
+        file_contents.gsub!(/^.*#.*$/, '')#.strip!
+
+        File.open(path, "w") { |new_file| new_file.write(file_contents) }
+      end
+    end
+
     def remove_routes_comment_lines
       replace_in_file 'config/routes.rb',
         /Rails\.application\.routes\.draw do.*end/m,

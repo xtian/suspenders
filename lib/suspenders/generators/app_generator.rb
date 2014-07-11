@@ -33,6 +33,7 @@ module Suspenders
       invoke :setup_stylesheets
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
+      invoke :remove_config_comment_lines
       invoke :remove_routes_comment_lines
       invoke :setup_git
       invoke :setup_database
@@ -172,6 +173,10 @@ module Suspenders
     def customize_error_pages
       say 'Customizing the 500/404/422 pages'
       build :customize_error_pages
+    end
+
+    def remove_config_comment_lines
+      build :remove_config_comment_lines
     end
 
     def remove_routes_comment_lines
