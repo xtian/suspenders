@@ -1,10 +1,8 @@
-#!/usr/bin/env ruby
+#!/usr/local/bin/ruby
 
-# This bin file is provided for convenience during development, the
-# distribution binary is built from the template at src/gitsh.in
-require 'bundler/setup'
-$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
+$LOAD_PATH.unshift('/home/mike/.localest/share/suspenders/ruby')
 
+require '/home/mike/.localest/share/suspenders/gems/setup.rb'
 require 'pathname'
 require 'suspenders'
 

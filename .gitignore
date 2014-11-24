@@ -1,4 +1,41 @@
+# autotools related files
+Makefile
+Makefile.in
+*/Makefile
+*/Makefile.in
+aclocal.m4
+autom4te.cache
+autoscan.log
+config.log
+config.status
+configure
+configure.scan
+install-sh
+missing
+compile
+depcomp
+test-driver
+*/.deps
+
+# Make targets
+src/gitsh
+src/gitsh.rb
+lib/gitsh/version.rb
+gitsh-*.tar.gz
+vendor/gems
+*.o
+
+# Sub-repositories for release
+gh-pages
+homebrew-formulae
+release-arch
+
+# Test output
+spec/**/*log
+test-suite.log
+spec/**/*trs
+
+# Gem output
 *.gem
-*.swp
 /.bundle
 /tmp
