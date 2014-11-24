@@ -18,10 +18,10 @@ test-driver
 */.deps
 
 # Make targets
-src/gitsh
-src/gitsh.rb
-lib/gitsh/version.rb
-gitsh-*.tar.gz
+src/suspenders
+src/suspenders.rb
+lib/suspenders/version.rb
+suspenders-*.tar.gz
 vendor/gems
 *.o
 
