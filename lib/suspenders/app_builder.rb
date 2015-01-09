@@ -50,10 +50,6 @@ module Suspenders
       copy_file 'factory_girl_rspec.rb', 'spec/support/factory_girl.rb'
     end
 
-    def configure_newrelic
-      template 'newrelic.yml.erb', 'config/newrelic.yml'
-    end
-
     def configure_smtp
       copy_file 'smtp.rb', 'config/smtp.rb'
 
@@ -321,12 +317,6 @@ fi
     def set_heroku_rails_secrets
       %w(staging production).each do |environment|
         run_heroku "config:add SECRET_KEY_BASE=#{generate_secret}", environment
-      end
-    end
-
-    def set_memory_management_variable
-      %w(staging production).each do |environment|
-        run_heroku "config:add NEW_RELIC_AGGRESSIVE_KEEPALIVE=1", environment
       end
     end
 
