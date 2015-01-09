@@ -49,25 +49,6 @@ feature 'Suspend a new project with default configuration' do
     expect(File).to exist("#{project_path}/spec/support/i18n.rb")
   end
 
-  scenario 'newrelic.yml reads NewRelic license from env' do
-    run_suspenders
-
-    newrelic_file = IO.read("#{project_path}/config/newrelic.yml")
-
-    expect(newrelic_file).to match(
-      /license_key: "<%= ENV\["NEW_RELIC_LICENSE_KEY"\] %>"/
-    )
-  end
-
-  scenario 'records pageviews through Segment.io if ENV variable set' do
-    run_suspenders
-
-    expect(analytics_partial).
-      to include(%{<% if ENV["SEGMENT_IO_KEY"] %>})
-    expect(analytics_partial).
-      to include(%{window.analytics.load("<%= ENV["SEGMENT_IO_KEY"] %>");})
-  end
-
   scenario "raises on unpermitted parameters in all environments" do
     run_suspenders
 
