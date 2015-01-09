@@ -31,7 +31,6 @@ module Suspenders
       invoke :setup_staging_environment
       invoke :setup_secret_token
       invoke :create_suspenders_views
-      invoke :setup_coffeescript
       invoke :configure_app
       invoke :setup_stylesheets
       invoke :install_bitters
@@ -116,11 +115,6 @@ module Suspenders
       build :create_shared_flashes
       build :create_shared_javascripts
       build :create_application_layout
-    end
-
-    def setup_coffeescript
-      say 'Setting up CoffeeScript defaults'
-      build :remove_turbolinks
     end
 
     def configure_app

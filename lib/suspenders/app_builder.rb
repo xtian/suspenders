@@ -136,12 +136,6 @@ end
         force: true
     end
 
-    def remove_turbolinks
-      replace_in_file 'app/assets/javascripts/application.js',
-        /\/\/= require turbolinks\n/,
-        ''
-    end
-
     def use_postgres_config_template
       template 'postgresql_database.yml.erb', 'config/database.yml',
         force: true
